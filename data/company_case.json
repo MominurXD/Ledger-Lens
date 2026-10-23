@@ -1,0 +1,30 @@
+{
+  "company": "Northstar Retail Ltd",
+  "currency": "GBP",
+  "period": "FY2026",
+  "budget": {
+    "revenue": 2400000,
+    "cost_of_sales": 1440000,
+    "operating_expenses": 610000,
+    "current_assets": 530000,
+    "current_liabilities": 310000,
+    "capital_employed": 1250000
+  },
+  "actual": {
+    "revenue": 2280000,
+    "cost_of_sales": 1425000,
+    "operating_expenses": 665000,
+    "current_assets": 498000,
+    "current_liabilities": 345000,
+    "capital_employed": 1290000
+  },
+  "drivers": {
+    "sales_volume_change_pct": -4.2,
+    "average_selling_price_change_pct": -1.1,
+    "payroll_variance": 28000,
+    "marketing_variance": 19000,
+    "utilities_variance": 8000,
+    "inventory_days_budget": 42,
+    "inventory_days_actual": 51
+  }
+}

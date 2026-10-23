@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ledger-Lens — Finance Training Tool</title>
+  <meta name="description" content="Interactive finance training for financial statements, ratios, budgeting, forecasting and business analysis.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span>LL</span><div><strong>Ledger-Lens</strong><small>finance training workspace</small></div></div>
+    <nav aria-label="Training sections">
+      <button type="button" class="nav active" data-tab="learn">01 <span>Learn</span></button>
+      <button type="button" class="nav" data-tab="ratios">02 <span>Ratio Lab</span></button>
+      <button type="button" class="nav" data-tab="breakeven">03 <span>Break-even</span></button>
+      <button type="button" class="nav" data-tab="case">04 <span>Business Case</span></button>
+      <button type="button" class="nav" data-tab="quiz">05 <span>Quiz</span></button>
+    </nav>
+    <div class="progress-card"><small>TRAINING PROGRESS</small><strong id="progressText">0%</strong><div><i id="progressBar"></i></div></div>
+    <footer>PERSONAL PROJECT · 2026<br>MOHAMMED MOMINUR RAHMAN MIAH</footer>
+  </aside>
+
+  <main>
+    <header class="topbar"><span>FINANCE TRAINING / PRACTICAL ANALYSIS</span><b>LIVE PRACTICE MODE</b></header>
+    <section class="hero">
+      <div><span class="eyebrow">FINANCIAL STATEMENTS · RATIOS · FORECASTING · DECISIONS</span><h1>Learn finance by <em>doing the analysis.</em></h1><p>Ledger-Lens turns finance theory into practical exercises using a synthetic company dataset, calculators, case-study decisions and quizzes.</p></div>
+      <div class="hero-stats"><div><strong>06</strong><small>LEARNING MODULES</small></div><div><strong>05</strong><small>PRACTICE AREAS</small></div><div><strong>1</strong><small>BUSINESS CASE</small></div></div>
+    </section>
+
+    <section id="learn" class="panel-section active-section">
+      <div class="section-title"><div><span class="eyebrow dark">01 / LEARN</span><h2>Core finance concepts</h2></div><p>Complete each module as you work through it.</p></div>
+      <div id="lessonGrid" class="lesson-grid"></div>
+    </section>
+
+    <section id="ratios" class="panel-section">
+      <div class="section-title"><div><span class="eyebrow dark">02 / RATIO LAB</span><h2>Turn statements into indicators</h2></div><p>Change the numbers and explain what the ratios mean.</p></div>
+      <div class="two-col">
+        <form id="ratioForm" class="card form-card">
+          <label>Revenue (£)<input id="revenue" type="number" value="1200000" min="1" step="0.01"></label>
+          <label>Cost of sales (£)<input id="cos" type="number" value="720000" min="0" step="0.01"></label>
+          <label>Operating expenses (£)<input id="opex" type="number" value="300000" min="0" step="0.01"></label>
+          <label>Current assets (£)<input id="ca" type="number" value="310000" min="0" step="0.01"></label>
+          <label>Current liabilities (£)<input id="cl" type="number" value="200000" min="1" step="0.01"></label>
+          <label>Capital employed (£)<input id="capital" type="number" value="900000" min="1" step="0.01"></label>
+          <button type="submit">Calculate ratios →</button><p id="ratioError" class="error"></p>
+        </form>
+        <div class="metrics">
+          <div class="card"><small>GROSS MARGIN</small><strong id="grossMargin">40.0%</strong><p>Gross profit retained from each £1 of revenue.</p></div>
+          <div class="card"><small>OPERATING MARGIN</small><strong id="operatingMargin">15.0%</strong><p>Operating profit generated from revenue.</p></div>
+          <div class="card"><small>CURRENT RATIO</small><strong id="currentRatio">1.55×</strong><p id="liquidityText">Current assets exceed short-term liabilities.</p></div>
+          <div class="card"><small>ROCE</small><strong id="roce">20.0%</strong><p>Return generated from capital employed.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="breakeven" class="panel-section">
+      <div class="section-title"><div><span class="eyebrow dark">03 / BREAK-EVEN</span><h2>Test the economics of a product</h2></div><p>See how price, variable cost and fixed costs change the break-even point.</p></div>
+      <div class="two-col">
+        <form id="beForm" class="card form-card">
+          <label>Fixed costs (£)<input id="fixedCosts" type="number" value="100000" min="0" step="0.01"></label>
+          <label>Unit selling price (£)<input id="unitPrice" type="number" value="50" min="0.01" step="0.01"></label>
+          <label>Unit variable cost (£)<input id="unitVariableCost" type="number" value="30" min="0" step="0.01"></label>
+          <button type="submit">Calculate break-even →</button><p id="beError" class="error"></p>
+        </form>
+        <div class="metrics">
+          <div class="card"><small>CONTRIBUTION / UNIT</small><strong id="contribution">£20.00</strong><p>Amount each unit contributes toward fixed costs and profit.</p></div>
+          <div class="card"><small>CONTRIBUTION MARGIN</small><strong id="contributionMargin">40.0%</strong><p>Contribution as a percentage of selling price.</p></div>
+          <div class="card wide"><small>BREAK-EVEN VOLUME</small><strong id="breakEvenUnits">5,000 units</strong><p>Units needed before the product starts generating operating profit.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="case" class="panel-section">
+      <div class="section-title"><div><span class="eyebrow dark">04 / BUSINESS CASE</span><h2>Northstar Retail Ltd</h2></div><p>Analyse performance before a management meeting.</p></div>
+      <div class="case-grid">
+        <div class="card table-card"><table><thead><tr><th>Metric</th><th>Budget</th><th>Actual</th><th>Variance</th></tr></thead><tbody id="caseTable"></tbody></table></div>
+        <div class="card"><small>ANALYST PROMPT</small><h3>What would you investigate first?</h3><div id="caseChoices" class="choices"></div><button id="checkCase">Check analysis</button><div id="caseFeedback" class="feedback"></div></div>
+      </div>
+      <div id="drivers" class="driver-grid"></div>
+    </section>
+
+    <section id="quiz" class="panel-section">
+      <div class="section-title"><div><span class="eyebrow dark">05 / QUIZ</span><h2>Test your finance knowledge</h2></div><p>Five questions with explanations.</p></div>
+      <form id="quizForm" class="quiz-grid"></form>
+      <div id="quizResult" class="quiz-result"></div>
+    </section>
+
+    <section class="skills-strip"><div><b>Skills demonstrated</b><span>Financial modelling</span><span>Variance analysis</span><span>Business analysis</span><span>Decision support</span><span>Data interpretation</span></div></section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
